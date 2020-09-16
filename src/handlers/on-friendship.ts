@@ -3,7 +3,6 @@ import {
   log,
   Wechaty,
 }             from 'wechaty'
-import { FriendshipType } from 'wechaty-puppet-padplus/dist/src/schemas'
 
 export default async function onFriendship (
   this       : Wechaty,
