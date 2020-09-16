@@ -3,6 +3,7 @@ import {
   Wechaty,
   log,
 }               from 'wechaty'
+import { GrpcGetMsgVoiceType } from 'wechaty-puppet-padplus/dist/src/schemas'
 
 import {
   PORT,
@@ -20,17 +21,19 @@ export async function startWeb (bot: Wechaty): Promise<void> {
   })
 
   function isFromWeixinAuth(req: any): boolean{
-    if (req.query.signature != null && req.query.timestamp != null && req.query.echostr != null){
+    // test the request is from weixin authentication
+    const {signature, timestamp, echostr} = req.query
+
+    if (signature != null && timestamp != null && echostr != null){
       return true
     }
     return false
   }
 
-  const handler = (request: any, h: any) => {
+  const handler = (request: any, h: any): string | void => {
     console.log(request, h)
     if (isFromWeixinAuth(request)){
       request.send(request.query.echostr)
-      return null
     }
     else if (qrcodeValue) {
       const html = [
