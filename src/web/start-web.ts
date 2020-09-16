@@ -3,6 +3,7 @@ import {
   Wechaty,
   log,
 }               from 'wechaty'
+import { stringMatcher } from 'wechaty-plugin-contrib/dist/src/matchers/mod'
 
 import {
   PORT,
@@ -19,8 +20,19 @@ export async function startWeb (bot: Wechaty): Promise<void> {
     port: PORT,
   })
 
-  const handler = () => {
-    if (qrcodeValue) {
+  function isFromWeixinAuth(req: any): boolean{
+    if (req.query.signature != null && req.query.timestamp != null && req.query.echostr != null){
+      return true
+    }
+    return false
+  }
+
+  const handler = (request: any, h: any) => {
+    console.log(request, h)
+    if (isFromWeixinAuth(request)){
+      request.send(request.query.echostr)
+    }
+    else if (qrcodeValue) {
       const html = [
         `<h1>Heroku Wechaty Getting Started v${VERSION}</h1>`,
         'Scan QR Code: <br />',
