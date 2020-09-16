@@ -13,6 +13,7 @@ async function main () {
   const name = process.env.WECHATY_NAME || 'heroku-wechaty'
 
   const bot = getWechaty(name)
+//   await bot.start()
 
   await Promise.all([
     bot.start(),

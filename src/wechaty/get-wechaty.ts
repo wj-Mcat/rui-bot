@@ -22,10 +22,15 @@ export function getWechaty (name: string): Wechaty {
   }
 
   const memory = getMemory(name)
+  console.log(memory)
 
   wechaty = new Wechaty({
-    memory,
-    name,
+    // memory: memory,
+    name: name,
+    puppet: 'wechaty-puppet-hostie',
+    puppetOptions: {
+        token: 'puppet_donut_ffb8809cdee97035'
+    }
   })
 
   wechaty.use(
