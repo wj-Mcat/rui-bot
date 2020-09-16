@@ -3,7 +3,6 @@ import {
   Wechaty,
   log,
 }               from 'wechaty'
-import { stringMatcher } from 'wechaty-plugin-contrib/dist/src/matchers/mod'
 
 import {
   PORT,
@@ -31,6 +30,7 @@ export async function startWeb (bot: Wechaty): Promise<void> {
     console.log(request, h)
     if (isFromWeixinAuth(request)){
       request.send(request.query.echostr)
+      return null
     }
     else if (qrcodeValue) {
       const html = [
