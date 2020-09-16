@@ -3,7 +3,6 @@ import {
   Wechaty,
   log,
 }               from 'wechaty'
-import { GrpcGetMsgVoiceType } from 'wechaty-puppet-padplus/dist/src/schemas'
 
 import {
   PORT,
