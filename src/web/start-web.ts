@@ -16,11 +16,13 @@ export async function startWeb (bot: Wechaty): Promise<void> {
   let userName    : undefined | string
 
   const server =  new Hapi.Server({
-    port: PORT,
+    port: 80,
+    host: '0.0.0.0'
   })
 
   function isFromWeixinAuth(req: any): boolean{
     // test the request is from weixin authentication
+    console.log(req.query)
     const {signature, timestamp, echostr} = req.query
 
     if (signature != null && timestamp != null && echostr != null){
@@ -29,10 +31,9 @@ export async function startWeb (bot: Wechaty): Promise<void> {
     return false
   }
 
-  const handler = (request: any, h: any): string | void => {
-    console.log(request, h)
+  const handler = (request: any, _: any): string | void => {
     if (isFromWeixinAuth(request)){
-      request.send(request.query.echostr)
+      return request.query.echostr
     }
     else if (qrcodeValue) {
       const html = [

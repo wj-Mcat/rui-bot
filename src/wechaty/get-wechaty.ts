@@ -27,10 +27,7 @@ export function getWechaty (name: string): Wechaty {
   wechaty = new Wechaty({
     // memory: memory,
     name: name,
-    puppet: 'wechaty-puppet-hostie',
-    puppetOptions: {
-        token: 'puppet_donut_ffb8809cdee97035'
-    }
+    
   })
 
   wechaty.use(

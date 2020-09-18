@@ -44,6 +44,7 @@
     "wechaty-plugin-contrib": "^0.14.11",
     "wechaty-puppet-hostie": "^0.10.2",
     "wechaty-puppet-mock": "^0.28.1",
+    "wechaty-puppet-official-account": "^0.4.2",
     "wechaty-puppet-padplus": "^0.7.30",
     "wechaty-vorpal": "^0.6.6",
     "wechaty-vorpal-contrib": "^0.6.46"
@@ -52,10 +53,5 @@
     "@chatie/eslint-config": "^0.8.1",
     "@chatie/git-scripts": "^0.2.5",
     "tstest": "^0.4.2"
-  },
-  "git": {
-    "scripts": {
-      "pre-push": "npx git-scripts-pre-push"
-    }
   }
 }
